@@ -124,5 +124,4 @@ fi
 # remove the working files
 rm -rf $TMP_DIR
 echo "Done!"
-
 $AFTER_BUILD

@@ -40,7 +40,7 @@ under the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****
 
 
- * Website: http://firegpg.com/
+ * Website: http://getfiregpg.org/
  *
  * An API to use FireGPG's functions. You can use the FireGPG's
  * functions directly too, but it's more difficult.

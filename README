@@ -1,4 +1,3 @@
-Name:    FireGPG
 Website: http://firegpg.com
 Authors: FireGPG Team <support@firegpg.com>
 
@@ -21,4 +20,8 @@ For development you should do the following:
 ===============
 Report a bug
 ===============
+<<<<<<< HEAD
 Please report your bugs on the bug tracker: http://firegpg.com/
+=======
+Please report your bugs on the bug tracker: http://bugs.getfiregpg.org
+>>>>>>> d5e1a563dc2d10392a7a3f79cb4ea83d9d986406
