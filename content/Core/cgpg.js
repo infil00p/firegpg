@@ -2589,7 +2589,7 @@ FireGPG.Core = {
 
         }
 
-        var result = this.FireGPGGPGAccess.genereateKey(name, email, comment, password1, keyneverexpire, keyexpirevalue, keyexpiretype, keylength, keytype);
+        var result = this.FireGPGGPGAccess.generateKey(name, email, comment, password1, keyneverexpire, keyexpirevalue, keyexpiretype, keylength, keytype);
 
         if (result.sdOut.indexOf("KEY_CREATED") != -1) {
 

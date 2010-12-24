@@ -418,6 +418,7 @@ FireGPG.GPGAccess = {
         }
 
         try {
+	    console.log('We pipe out to the executable');
             this.ipcService.runPipe(fileobj, gpgArgs, gpgArgs.length, "", sdtIn, sdtIn.length, env, env.length, outStrObj, outLenObj, errStrObj, errLenObj);
         }
         catch (e) {
@@ -1138,7 +1139,7 @@ FireGPG.GPGAccess = {
       Return:
         A <FireGPG.GPGReturn> structure.
     */
-    genereateKey: function(name, email, comment, password, keyneverexpire, keyexpirevalue, keyexpiretype, keylength, keytype){
+    generateKey: function(name, email, comment, password, keyneverexpire, keyexpirevalue, keyexpiretype, keylength, keytype){
         var data;
 
         if (keyneverexpire)
@@ -1177,7 +1178,7 @@ FireGPG.GPGAccess = {
 
                 "%commit";
 
-
+	console.log('Generating key');
         var result = this.runGnupg(this.getBaseArugments()  + " --gen-key", data + "\n");
 
         var result2 = new FireGPG.GPGReturn();
