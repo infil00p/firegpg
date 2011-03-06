@@ -602,6 +602,43 @@ function fireGPGDecrypt(auth_key, text) {
 
 }
 
+// Check if a sign is valid.
+// Return an object with diffrent informations
+function fireGPGKimport(auth_key, text) {
+
+	if(FireGPGHelloOK == false)
+	{
+		if(fireGPGHello()== false) {
+			alert('FireGPG - api : Error, FireGPG doesn\'t respond.');
+			return false;
+		}
+	}
+
+	if(FireGPGAllowUser == false)
+	{
+		if(fireGPGAuth(auth_key)== false) {
+			alert('FireGPG - api : Error with auth in check');
+			return false;
+		}
+	}
+
+	fireGPGInitCall();
+
+	FireGPGData.setAttribute('auth_key', auth_key);
+	FireGPGData.setAttribute('text', text);
+
+	fireGPGCall('kimport');
+
+	if(FireGPGReturnData.hasAttribute('result')== false)
+	{
+		alert('FireGPG - api : Error in check');
+		return false;
+	} else {
+
+		return FireGPGData;
+	}
+
+}
 // Change #1 to #, #2 to : and #3 to , in a string
 function fireGPGAddDoublePoint (s) {
 

@@ -76,6 +76,7 @@ FireGPG.Api = {
             window.addEventListener( "firegpg:decrypt", this.decrypt, false, true );
             window.addEventListener( "firegpg:encrypt", this.encrypt, false, true );
             window.addEventListener( "firegpg:signandencrypt", this.signandencrypt, false, true );
+            window.addEventListener( "firegpg:kimport", this.kimport, false, true );
 			window.addEventListener( "unload", function() { FireGPG.Api.listenerUnload() }, false );
 		}
 
@@ -96,6 +97,7 @@ FireGPG.Api = {
         window.removeEventListener( "firegpg:decrypt", this.decrypt, false, true );
         window.removeEventListener( "firegpg:encrypt", this.encrypt, false, true );
         window.removeEventListener( "firegpg:signandencrypt", this.signandencrypt, false, true );
+        window.removeEventListener( "firegpg:kimport", this.kimport, false, true );
 
 	},
 
@@ -693,6 +695,34 @@ FireGPG.Api = {
         returnData.setAttribute('result', 'decrypt-err');
         returnData.setAttribute('error', 'unknow');
 
+    },
+    /*
+		Function: kimport
+		Return 'kimport-ok' in 'result' (or 'kimport-err' is there is a problem) if makeing a signed and encrypted text was successfull
+
+    	Paramters:
+			auth_key - the key for the website
+			text - the public key text to import
+	*/
+    kimport: function ( event ) {
+
+
+        var data = FireGPG.Api.getDataNode(event.target);
+
+        key_auth = data.getAttribute('auth_key');
+
+        returnData = FireGPG.Api.getReturnDataNode(event.target);
+
+        if (key_auth == '' || key_auth == undefined || FireGPG.Api.isAuth(key_auth, event.target.ownerDocument) == false )
+        {
+            return;
+        }
+
+        var text = data.getAttribute('text');
+	
+	result = FireGPG.Core.kimport(true, text, false);	
+
+        returnData.setAttribute('result', result.result);
     },
 
 
